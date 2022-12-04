@@ -28,7 +28,7 @@ const MainArea = props => {
 
     return (
         <div className={styles.mainArea}>
-            <h1 className={styles.formHeading}> Add Items to the List</h1>
+            <h1 className={styles.formHeading}> {props.itemToEdit.id ? 'Edit' : 'Add'} Items in the List</h1>
             <Formik initialValues={initialValues} onSubmit={submitHandler} enableReinitialize={true}>
                 <Form>
                     <div>
