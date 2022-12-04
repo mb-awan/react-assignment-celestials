@@ -1,0 +1,13 @@
+.appHeading {
+    margin-left: 7%;
+    font-size: 1.5rem;
+    padding: 0px;
+    color: #470247;
+}
+
+.appContent {
+    width: 95%;
+    height: 60vh;
+    margin: 10px auto;
+    display: flex;
+}

@@ -1,0 +1,10 @@
+.sideBar {
+    width: 30%;
+    border: solid purple;
+    border-width: 4px 2px 0 0;
+    height: 80vh;
+    overflow: auto;
+    padding-top: 5px;
+}
+
+

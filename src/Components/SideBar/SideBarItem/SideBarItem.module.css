@@ -1,0 +1,84 @@
+.sideBarItem {
+    border: 2px solid purple;
+    display: flex;
+    width: 98%;
+    height: 15%;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.color {
+    width: 4.8%;
+    height: 100%;
+    margin-right: 0.2%;
+}
+
+.id {
+    background-color: #870a87;
+    color: white;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    height: 100%;
+}
+
+.id span {
+    /*background-color: blue;*/
+    transform: rotate(-75deg);
+}
+
+.content {
+    border: 2px solid white;
+    width: 75%;
+}
+
+.title {
+    height: 20%;
+    padding: 2px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.text {
+    padding: 2px;
+    height: 70%;
+    font-size: 0.7rem;
+    overflow-y: auto;
+}
+
+.operations {
+    width: 9.5%;
+    height: 98%;
+}
+
+.edit {
+    height: 49%;
+    margin-bottom: 2%;
+    background-color: #0a3102;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px 2px;
+}
+
+.edit:hover{
+    cursor: pointer;
+}
+
+.delete {
+    height: 49%;
+    background-color: #a10808;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px 5px;
+}
+
+.delete:hover{
+    cursor: pointer;
+}
