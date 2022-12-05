@@ -1,67 +1,34 @@
 import styles from './MainArea.module.css';
-import {Field, Form, Formik} from "formik";
+import CreateUpdateForm from "./CreateUpdateForm/CreateUpdateForm";
 
 const MainArea = props => {
     // To get the values in case of editing existing item
     const {titleToEdit, colorToEdit, textToEdit} = props.itemToEdit;
 
-
+    // In case of update form the values will be initialized with props.itemToEdit for prefilled form
     let initialValues = {
         title: titleToEdit ? titleToEdit : '',
         color: colorToEdit ? colorToEdit : '#470247',
         text: textToEdit ? textToEdit : ''
     }
 
-    const submitHandler = (values, {resetForm}) => {
-        // console.log(values)
+    const createUpdateSubmitHandler = (values, {resetForm}) => {
         const newItem = {
             id: props.itemToEdit.id ? props.itemToEdit.id : Math.floor(1000 + Math.random() * 9000),
             ...values
-        }
-        props.onAddItem(newItem);
+        } // To create a new item with newly created id or updated object item with previous id
+        props.onAddorUpdateItem(newItem);
         resetForm();
-        if(props.itemToEdit){
+        // To Reset Form in case of Update Form
+        if(props.itemToEdit.id){
             props.onUpdateReset();
         }
     }
 
-
     return (
         <div className={styles.mainArea}>
             <h1 className={styles.formHeading}> {props.itemToEdit.id ? 'Edit' : 'Add'} Items in the List</h1>
-            <Formik initialValues={initialValues} onSubmit={submitHandler} enableReinitialize={true}>
-                <Form>
-                    <div>
-                        <label htmlFor='title'>title:</label>
-                        <Field
-                            id='title'
-                            name='title'
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor='color'>color:</label>
-                        <Field
-                            id='color'
-                            name='color'
-                            type='color'
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor='text'>text:</label>
-                        <Field
-                            id='text'
-                            name='text'
-                            as='textarea'
-                        />
-                    </div>
-                    <div className={styles.formControls}>
-                        <button
-                            type='submit'
-                        >Save
-                        </button>
-                    </div>
-                </Form>
-            </Formik>
+            <CreateUpdateForm initialValues={initialValues} onSubmit={createUpdateSubmitHandler}/>
         </div>
     )
 }

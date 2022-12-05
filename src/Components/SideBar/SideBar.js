@@ -1,5 +1,5 @@
 import styles from './SideBar.module.css';
-import SideBarItem from "../SideBarItem/SideBarItem";
+import SideBarItem from "./SideBarItem/SideBarItem";
 
 const SideBar = props => {
     const editItemHandler = itemToEdit => {
