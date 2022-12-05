@@ -1,12 +1,14 @@
-import styles from './CreateUpdateForm.module.css';
+import styles from './ItemsForm.module.css';
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {ItemsValidationSchema} from "./ValidationSchema";
 
-const CreateUpdateForm = props => {
+const ItemsForm = props => {
+    const { initialValues, onSubmit} = props;
+
     return (
         <Formik
-            initialValues={props.initialValues}
-            onSubmit={props.onSubmit}
+            initialValues={initialValues}
+            onSubmit={onSubmit}
             enableReinitialize={true}
             validationSchema={ItemsValidationSchema}
         >
@@ -18,11 +20,7 @@ const CreateUpdateForm = props => {
                         name='title'
                     />
                     <ErrorMessage name='title'>
-                        {
-                            props => {
-                                return <div className={styles.error}>{props}</div>
-                            }
-                        }
+                        {props => <div className={styles.error}>{props}</div>}
                     </ErrorMessage>
                 </div>
 
@@ -43,11 +41,7 @@ const CreateUpdateForm = props => {
                         as='textarea'
                     />
                     <ErrorMessage name='text'>
-                        {
-                            props => {
-                                return <div className={styles.error}>{props}</div>
-                            }
-                        }
+                        {props => <div className={styles.error}>{props}</div>}
                     </ErrorMessage>
                 </div>
 
@@ -62,4 +56,4 @@ const CreateUpdateForm = props => {
     );
 }
 
-export default CreateUpdateForm;
+export default ItemsForm;

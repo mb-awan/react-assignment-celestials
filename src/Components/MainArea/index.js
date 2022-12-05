@@ -1,9 +1,10 @@
 import styles from './MainArea.module.css';
-import CreateUpdateForm from "./CreateUpdateForm/CreateUpdateForm";
+import ItemsForm from "./ItemsForm";
 
 const MainArea = props => {
+    const { itemToEdit, onAddOrUpdateItem, onUpdateReset } = props;
     // To get the values in case of editing existing item
-    const {titleToEdit, colorToEdit, textToEdit} = props.itemToEdit;
+    const {titleToEdit, colorToEdit, textToEdit} = itemToEdit;
 
     // In case of update form the values will be initialized with props.itemToEdit for prefilled form
     let initialValues = {
@@ -14,21 +15,21 @@ const MainArea = props => {
 
     const createUpdateSubmitHandler = (values, {resetForm}) => {
         const newItem = {
-            id: props.itemToEdit.id ? props.itemToEdit.id : Math.floor(1000 + Math.random() * 9000),
+            id: itemToEdit.id ? itemToEdit.id : Math.floor(1000 + Math.random() * 9000),
             ...values
         } // To create a new item with newly created id or updated object item with previous id
-        props.onAddorUpdateItem(newItem);
+        onAddOrUpdateItem(newItem);
         resetForm();
         // To Reset Form in case of Update Form
-        if(props.itemToEdit.id){
-            props.onUpdateReset();
+        if(itemToEdit.id){
+            onUpdateReset();
         }
     }
 
     return (
         <div className={styles.mainArea}>
-            <h1 className={styles.formHeading}> {props.itemToEdit.id ? 'Edit' : 'Add'} Items in the List</h1>
-            <CreateUpdateForm initialValues={initialValues} onSubmit={createUpdateSubmitHandler}/>
+            <h1 className={styles.formHeading}> {itemToEdit.id ? 'Edit' : 'Add'} Items in the List</h1>
+            <ItemsForm initialValues={initialValues} onSubmit={createUpdateSubmitHandler}/>
         </div>
     )
 }

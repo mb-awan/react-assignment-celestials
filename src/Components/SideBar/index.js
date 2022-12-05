@@ -1,18 +1,19 @@
 import styles from './SideBar.module.css';
-import SideBarItem from "./SideBarItem/SideBarItem";
+import SideBarItem from "./SideBarItem";
 
 const SideBar = props => {
+    const { sideBarItems, onEditItem, onDeleteItem } = props
     const editItemHandler = itemToEdit => {
-        props.onEditItem(itemToEdit);
+        onEditItem(itemToEdit);
     }
 
     const deleteItemHandler = id => {
-        props.onDeleteItem(id);
+        onDeleteItem(id);
     }
 
     return (
         <div className={styles.sideBar}>
-            {props.sideBarItems.map(item =>
+            {sideBarItems.map(item =>
                 <SideBarItem
                     key={item.id}
                     id={item.id}

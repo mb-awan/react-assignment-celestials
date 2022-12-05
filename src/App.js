@@ -1,6 +1,6 @@
 import styles from './App.module.css';
-import SideBar from "./Components/SideBar/SideBar";
-import MainArea from "./Components/MainArea/MainArea";
+import SideBar from "./Components/SideBar";
+import MainArea from "./Components/MainArea";
 import {useState} from "react";
 
 function App() {
@@ -55,7 +55,7 @@ function App() {
                     onDeleteItem = {deleteItem}
                 />
                 <MainArea
-                    onAddorUpdateItem={addAndUpdateItemHandler}
+                    onAddOrUpdateItem={addAndUpdateItemHandler}
                     itemToEdit={itemToEdit}
                     onUpdateReset={resetEditItem}
                 />
